@@ -1,4 +1,6 @@
-#the input lists for example [a,b,c] means that a has been in contact with b and c. it does not mean that b an c have been in contact with each other. 
+#contact list code in python
+# 
+# #the input lists for example [a,b,c] means that a has been in contact with b and c. it does not mean that b an c have been in contact with each other. 
 #making the dictionary which should have have the indexes for each person on the spreadchart 
 
 ##################INPUT THE LISTS OF PEOPLE CONTACT ################################# this must be a 2D array 
@@ -151,3 +153,4 @@ for the_patient in thedictionkey:
     print("recursive: ", removeDouble(findcontact(the_patient, somelist, finallist)))  #recursive, directly works off of the contact list.
 
 #thank you for reading my code 
+
