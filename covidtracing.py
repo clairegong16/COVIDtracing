@@ -7,7 +7,7 @@ somelist = [['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', '
             ['Lisa', 'Betty', 'Daniel' ], 
             ['Christopher', 'Anthony'], 
             ['Betty',  'William', 'Sarah']]    
-cohort_list = [['a','b','z'], ['b', 'c', 'd'], ['x', 'y', 'z']]
+#cohort_list = [['a','b','z'], ['b', 'c', 'd'], ['x', 'y', 'z']]
 def makedictionary(alllists): #all of the lists in a 2D array 
     thedictionindex = 0 
     thediction = {}
@@ -95,12 +95,7 @@ def thefinallist(the_patient, spreadchart):
     print("the target the_patient is ", the_patient, " and here are the list of the contacted: ", finallist)
         
 
-###########################INPUT THE SPECIFIC PATIENT##########################
-#in this case I used a for loop to have all of the people in the list be the targeted the_patient. 
-thedictionkey = list(thediction.keys())
-for the_patient in thedictionkey:
-    finallist = [the_patient]
-    thefinallist(the_patient, spreadchart)
+
 
 
 
@@ -112,7 +107,7 @@ for the_patient in thedictionkey:
 def findcontact(the_patient, cohort_list, final_list):
     #case 1: if the the_patient does not appear first in one of the lists, then done 
     ishead = False #keeps track of if it is a head or not. if it is true, then it is a head 
-    print("investigate the_patient: ", the_patient)
+    #print("investigate the_patient: ", the_patient)
     for a_cohort in cohort_list: #index goes through each row         
         if the_patient == a_cohort[0]:
             ishead = True 
@@ -122,7 +117,7 @@ def findcontact(the_patient, cohort_list, final_list):
     #case 2: 
     else: # we've found a cohort with 'the_patient' as head
         for a_contact in a_cohort[1:]: # any person after the head [a, b, c] 
-            print(a_contact, "is a contact of ", the_patient)
+            #print(a_contact, "is a contact of ", the_patient)
             my_list = final_list + [a_contact]
             final_list = findcontact(a_contact, cohort_list, my_list) #  add the contact to final list 
         return final_list
@@ -135,13 +130,22 @@ def removeDouble(final_list):
     return finalfinallist
 
 
-apatient = 'James'
+apatient = 'Lisa' 
 # we use a loop to test all the cases we want test:
-test_case = ['y', 'x', 'b', 'a']
-print("Cohort list = ",cohort_list)
-for apatient in somelist:
-    print("test case:", apatient, " is the patient")
-    finallist = [apatient]
-    print ("these people have had contact with ", apatient, removeDouble(findcontact(apatient, cohort_list, finallist)))
-    print("====")
+#test_case = [['y', 'x', 'b', 'a'],['y','f']]
+print("Cohort list = ",somelist)
+print("test case:", apatient, " is the patient")
+finallist = [apatient]
+print ("these people have had contact with ", apatient, removeDouble(findcontact(apatient, somelist, finallist)))
+print("====")
 # print(findcontactedrecursion(apatient, finallist))
+
+
+
+###########################INPUT THE SPECIFIC PATIENT##########################
+#in this case I used a for loop to have all of the people in the list be the targeted the_patient. 
+thedictionkey = list(thediction.keys())
+for the_patient in thedictionkey:
+    finallist = [the_patient]
+    thefinallist(the_patient, spreadchart)   #iteritative with a 2D array to represent the contact relationship 
+    print("recursive: ", removeDouble(findcontact(the_patient, somelist, finallist)))  #recursive, directly works off of the contact list 
