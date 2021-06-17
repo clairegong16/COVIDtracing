@@ -1,14 +1,13 @@
 #the input lists for example [a,b,c] means that a has been in contact with b and c. it does not mean that b an c have been in contact with each other. 
 #making the dictionary which should have have the indexes for each person on the spreadchart 
 
-##################INPUT THE LISTS OF PEOPLE CONTACT #################################
+##################INPUT THE LISTS OF PEOPLE CONTACT ################################# this must be a 2D array 
 somelist = [['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew'], #15 total people
             ['David', 'Sarah', 'Lisa', 'Matthew'], 
             ['Lisa', 'Betty', 'Daniel' ], 
             ['Christopher', 'Anthony'], 
             ['Betty',  'William', 'Sarah']]    
-
-
+cohort_list = [['a','b','z'], ['b', 'c', 'd'], ['x', 'y', 'z']]
 def makedictionary(alllists): #all of the lists in a 2D array 
     thedictionindex = 0 
     thediction = {}
@@ -62,20 +61,20 @@ def thespreadchart(alllists, spreadchart):
 
 spreadchart = thespreadchart(somelist, spreadchart)
 print(spreadchart)
-#using the 2D array (spreadchart) to make the final list of all of the patients that the given patient has contacted
+#using the 2D array (spreadchart) to make the final list of all of the patients that the given the_patient has contacted
 
-def findcontacted(patient, spreadchart): 
+def findcontacted(the_patient, spreadchart): 
     thedictionval = list(thediction.values())
     thedictionkey = list(thediction.keys())
     #get all of the first contacts
     i = 0 
-    #need to see if the patient equals at least one of the first values a list 
+    #need to see if the the_patient equals at least one of the first values a list 
     heh = False
     for a in range(len(somelist)): #index goes through each row 
-        if patient == somelist[a][0]:
+        if the_patient == somelist[a][0]:
             heh = True
     if heh == True: 
-        for contacttracker in spreadchart[thediction[patient]]: #found the row, with the given patient. Now it needs to go through the col of the row to add the contacts. 
+        for contacttracker in spreadchart[thediction[the_patient]]: #found the row, with the given the_patient. Now it needs to go through the col of the row to add the contacts. 
             #to check if they have been in contacted, needs to equal 0 
             position = thedictionval.index(i)
             person = thedictionkey[position]
@@ -90,15 +89,77 @@ def findcontacted(patient, spreadchart):
 
 
 #printing and getting the finallist 
-def thefinallist(patient, spreadchart):
+def thefinallist(the_patient, spreadchart):
     for theperson in finallist: 
             findcontacted(theperson,spreadchart)
-    print("the target patient is ", patient, " and here are the list of the contacted: ", finallist)
+    print("the target the_patient is ", the_patient, " and here are the list of the contacted: ", finallist)
         
 
 ###########################INPUT THE SPECIFIC PATIENT##########################
-#in this case I used a for loop to have all of the people in the list be the targeted patient. 
+#in this case I used a for loop to have all of the people in the list be the targeted the_patient. 
 thedictionkey = list(thediction.keys())
-for patient in thedictionkey:
-    finallist = [patient]
-    thefinallist(patient, spreadchart)
+for the_patient in thedictionkey:
+    finallist = [the_patient]
+    thefinallist(the_patient, spreadchart)
+
+
+
+#recursion: 
+tracker = 1
+def findcontactedrecursion(the_patient, finallist):
+    #step 1: if the the_patient does not appear first in one of the lists, then done 
+    ishead = False #keeps track of if it is a head or not. if it is true, then it is a head 
+    for a in range(len(somelist)): #index goes through each row 
+        
+        if the_patient == somelist[a][0]:
+            ishead = True 
+        if ishead == True:
+            save = a 
+    if ishead == False: 
+        return finallist 
+    
+    for a in range(len(somelist)): #index goes through each row 
+        for b in range(len(somelist[save])):
+                heh = somelist[save][b] in finallist 
+                if heh == False:
+                    finallist.append(somelist[save][b])
+    #step 2: for each of the patients in the list, call the function 
+    for thepatient in finallist: 
+        print(thepatient)
+        return findcontactedrecursion(thepatient, finallist)
+    '''for num in range(0, len(finallist)): 
+        return findcontactedrecursion(finallist[num], finallist)'''
+
+#####
+#
+# function returns the list of people having contact with the patient, recursively.
+# we need to deal with two cases - the special case, and the general case (like for any recursive functions)
+#
+def findcontact(the_patient, cohort_list, final_list):
+    #case 1: if the the_patient does not appear first in one of the lists, then done 
+    ishead = False #keeps track of if it is a head or not. if it is true, then it is a head 
+    print("investigate the_patient: ", the_patient)
+    for a_cohort in cohort_list: #index goes through each row         
+        if the_patient == a_cohort[0]:
+            ishead = True 
+            break
+    if ishead == False:        
+        return final_list # 
+    #case 2: 
+    else: # we've found a cohort with 'the_patient' as head
+        for a_contact in a_cohort[1:]: # any person after the head
+            print(a_contact, "is a contact of ", the_patient)
+            final_list = findcontact(a_contact, cohort_list, final_list + [a_contact]) #  add the contact to final list 
+        return final_list
+
+#####
+apatient = 'James'
+# we use a loop to test all the cases we want:
+test_case = ['y', 'x', 'b', 'a']
+print("Cohort list = ",cohort_list)
+for apatient in test_case:
+    print("test case:", apatient, " is the patient")
+    finallist = [apatient]
+    print ("these people have had contact with ", apatient, findcontact(apatient, cohort_list, finallist))
+    print("====")
+# print(findcontactedrecursion(apatient, finallist))
