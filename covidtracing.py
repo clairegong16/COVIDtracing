@@ -147,17 +147,17 @@ def findcontact(the_patient, cohort_list, final_list):
         return final_list # 
     #case 2: 
     else: # we've found a cohort with 'the_patient' as head
-        for a_contact in a_cohort[1:]: # any person after the head
+        for a_contact in a_cohort[1:]: # any person after the head [a, b, c] 
             print(a_contact, "is a contact of ", the_patient)
-            final_list = findcontact(a_contact, cohort_list, final_list + [a_contact]) #  add the contact to final list 
+            my_list = final_list + [a_contact]
+            final_list = findcontact(a_contact, cohort_list, my_list) #  add the contact to final list 
         return final_list
 
-#####
 apatient = 'James'
-# we use a loop to test all the cases we want:
+# we use a loop to test all the cases we want test:
 test_case = ['y', 'x', 'b', 'a']
 print("Cohort list = ",cohort_list)
-for apatient in test_case:
+for apatient in somelist:
     print("test case:", apatient, " is the patient")
     finallist = [apatient]
     print ("these people have had contact with ", apatient, findcontact(apatient, cohort_list, finallist))
