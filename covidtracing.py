@@ -104,32 +104,6 @@ for the_patient in thedictionkey:
 
 
 
-#recursion: 
-tracker = 1
-def findcontactedrecursion(the_patient, finallist):
-    #step 1: if the the_patient does not appear first in one of the lists, then done 
-    ishead = False #keeps track of if it is a head or not. if it is true, then it is a head 
-    for a in range(len(somelist)): #index goes through each row 
-        
-        if the_patient == somelist[a][0]:
-            ishead = True 
-        if ishead == True:
-            save = a 
-    if ishead == False: 
-        return finallist 
-    
-    for a in range(len(somelist)): #index goes through each row 
-        for b in range(len(somelist[save])):
-                heh = somelist[save][b] in finallist 
-                if heh == False:
-                    finallist.append(somelist[save][b])
-    #step 2: for each of the patients in the list, call the function 
-    for thepatient in finallist: 
-        print(thepatient)
-        return findcontactedrecursion(thepatient, finallist)
-    '''for num in range(0, len(finallist)): 
-        return findcontactedrecursion(finallist[num], finallist)'''
-
 #####
 #
 # function returns the list of people having contact with the patient, recursively.
@@ -153,6 +127,14 @@ def findcontact(the_patient, cohort_list, final_list):
             final_list = findcontact(a_contact, cohort_list, my_list) #  add the contact to final list 
         return final_list
 
+def removeDouble(final_list):
+    finalfinallist = []
+    for i in final_list:
+        if i not in finalfinallist: 
+            finalfinallist.append(i)
+    return finalfinallist
+
+
 apatient = 'James'
 # we use a loop to test all the cases we want test:
 test_case = ['y', 'x', 'b', 'a']
@@ -160,6 +142,6 @@ print("Cohort list = ",cohort_list)
 for apatient in somelist:
     print("test case:", apatient, " is the patient")
     finallist = [apatient]
-    print ("these people have had contact with ", apatient, findcontact(apatient, cohort_list, finallist))
+    print ("these people have had contact with ", apatient, removeDouble(findcontact(apatient, cohort_list, finallist)))
     print("====")
 # print(findcontactedrecursion(apatient, finallist))
