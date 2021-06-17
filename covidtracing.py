@@ -148,4 +148,6 @@ thedictionkey = list(thediction.keys())
 for the_patient in thedictionkey:
     finallist = [the_patient]
     thefinallist(the_patient, spreadchart)   #iteritative with a 2D array to represent the contact relationship 
-    print("recursive: ", removeDouble(findcontact(the_patient, somelist, finallist)))  #recursive, directly works off of the contact list 
+    print("recursive: ", removeDouble(findcontact(the_patient, somelist, finallist)))  #recursive, directly works off of the contact list.
+
+#thank you for reading my code 
