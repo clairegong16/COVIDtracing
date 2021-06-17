@@ -36,8 +36,7 @@ print("thediction = ", thediction)
 
 
 
-#getting the lists, the output will be a 2D array of all of the lists given .
-'''alllists = [][] #need to fix this '''
+
 
 #using the lists to create a 2d array of the contacted people. if it is 1, the two people have been in contact with each other. if 0, they haven't 
 rows, cols = (len(thediction), len(thediction))
