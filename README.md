@@ -1,5 +1,5 @@
 # COVIDtracing
-
+Please see raw for better viewing of this output. 
 This project focuses on given a list of lists and a target person, return a list of people who were in contact with the target person from the lists. For instance, the list:somelist = [['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew'], #15 total people
             ['David', 'Sarah', 'Lisa', 'Matthew'], 
             ['Lisa', 'Betty', 'Daniel' ], 
@@ -10,7 +10,7 @@ I included two approaches in this code.
 1. Iterative, use a 2D array to mark who has been in contact with each other. 1 means they have, 0 means they haven't. Then, use a second method to go through the 2D array with a given patient to create the list. 
 2. Recursive, go through the list of lists with a recursive method. 
 
-Here are the results of this input (they alternate iterative first, then recursive). Please see raw for better viewing of this output. 
+Here are the results of this input (they alternate iterative first, then recursive).
 the target the_patient is  James  and here are the list of the contacted:  ['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew', 'Lisa', 'Betty', 'Daniel', 'William']
 recursive:  ['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew', 'Lisa', 'Betty', 'Daniel', 'William']
 the target the_patient is  Robert  and here are the list of the contacted:  ['Robert']
