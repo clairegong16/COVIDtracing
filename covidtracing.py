@@ -132,7 +132,7 @@ def removeDouble(final_list):
     return finalfinallist
 
 
-apatient = 'Lisa' #the specific patient 
+apatient = 'Lisa' #THE SPECIFIC PATIENT, INPUT
 # we use a loop to test all the cases we want test:
 print("Cohort list = ",somelist)
 print("test case:", apatient, " is the patient")
