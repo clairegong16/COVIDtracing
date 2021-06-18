@@ -10,7 +10,7 @@ I included two approaches in this code.
 1. Iterative, use a 2D array to mark who has been in contact with each other. 1 means they have, 0 means they haven't. Then, use a second method to go through the 2D array with a given patient to create the list. 
 2. Recursive, go through the list of lists with a recursive method. 
 
-Here are the results of this input (they alternate iterative first, then recursive). 
+Here are the results of this input (they alternate iterative first, then recursive). Please see raw for better viewing of this output. 
 the target the_patient is  James  and here are the list of the contacted:  ['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew', 'Lisa', 'Betty', 'Daniel', 'William']
 recursive:  ['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew', 'Lisa', 'Betty', 'Daniel', 'William']
 the target the_patient is  Robert  and here are the list of the contacted:  ['Robert']
