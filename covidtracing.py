@@ -9,7 +9,7 @@ somelist = [['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', '
             ['Lisa', 'Betty', 'Daniel' ], 
             ['Christopher', 'Anthony'], 
             ['Betty',  'William', 'Sarah']]    
-#cohort_list = [['a','b','z'], ['b', 'c', 'd'], ['x', 'y', 'z']]
+
 def makedictionary(alllists): #all of the lists in a 2D array 
     thedictionindex = 0 
     thediction = {}
@@ -132,15 +132,14 @@ def removeDouble(final_list):
     return finalfinallist
 
 
-apatient = 'Lisa' 
+apatient = 'Lisa' #the specific patient 
 # we use a loop to test all the cases we want test:
-#test_case = [['y', 'x', 'b', 'a'],['y','f']]
 print("Cohort list = ",somelist)
 print("test case:", apatient, " is the patient")
 finallist = [apatient]
 print ("these people have had contact with ", apatient, removeDouble(findcontact(apatient, somelist, finallist)))
 print("====")
-# print(findcontactedrecursion(apatient, finallist))
+
 
 
 
