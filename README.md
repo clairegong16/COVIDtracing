@@ -1,5 +1,4 @@
 # COVIDtracing
-Please see raw for better viewing of this output. 
 This project focuses on given a list of lists and a target person, return a list of people who were in contact with the target person from the lists. For instance, the list:somelist = [['James', 'Robert', 'Patricia', 'Mary', 'David', 'Sarah', 'Karen', 'Charles', 'Matthew'], #15 total people
             ['David', 'Sarah', 'Lisa', 'Matthew'], 
             ['Lisa', 'Betty', 'Daniel' ], 
